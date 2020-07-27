@@ -73,6 +73,7 @@ app.get('/admin/categorias/delete/:id', async(req,res)=> {
     await dbConnection
     console.log(req.params.id)
     await sqlite.run('delete from categorias where id =' +req.params.id)
+    await sqlite.run('delete from vagas where categoria = '+req.params.id)
     res.redirect('/admin/categorias')
 })
 
